@@ -59,12 +59,14 @@ Follow PSR-12. Match existing codebase style above everything else.
 
 ## General Approach
 
+- Do not start any task until you are 95% confident in the approach. Ask clarifying questions first.
 - Understand the existing codebase before making suggestions
 - Follow the patterns already in use — consistency beats novelty
 - Ask before introducing new dependencies
 - Security hook is active — it will flag SQL injection and XSS risks as you edit
 - Use `/feature-dev` for any feature that requires understanding existing architecture first
 - Use `/commit-push-pr` for all feature work
+- See `WORKFLOW.md` for session hygiene, where to open Claude, and sub-project isolation
 
 ---
 

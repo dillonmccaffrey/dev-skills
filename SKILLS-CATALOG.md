@@ -126,6 +126,30 @@ Starting a new project? Ask these:
 
 ---
 
+## Context & Token Management
+
+Not a skill to install — habits to build. Reference: ["18 Claude Code Token Management Hacks"](https://www.youtube.com/watch?v=49V-5Ock8LU)
+
+**Quick wins (do these now):**
+- Run `/context` to see where your tokens are going
+- Set up a status line: `/statusline` in terminal — shows model, visual bar, token count
+- Add `export CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60` to `~/.bashrc`
+- Disconnect MCPs you're not using (`/mcp` to see what's loaded)
+- `/clear` when switching unrelated tasks
+
+**Every session:**
+- `/compact` at ~60% context, not 95%
+- `/compact` or `/clear` before any break >5 mins (5-min cache TTL)
+- Batch multi-step instructions into one message
+- Watch Claude on long tasks — stop it early if going wrong
+
+**CLAUDE.md hygiene:**
+- Keep under 200 lines / 500 tokens
+- Use it as an index (point to file paths) — never embed file content
+- See `WORKFLOW.md` for full guidance on where to open Claude and sub-project isolation
+
+---
+
 ## Benchmarking
 
 **Baseline metrics to capture before installing:**

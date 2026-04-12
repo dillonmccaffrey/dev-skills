@@ -40,10 +40,11 @@ All evaluated skills for PHP full-stack development. Read this to decide what to
 ---
 
 ### yt-tools
-**Commands:** `yt-transcript <url>`, `yt-analyze <url> ["question"]`
+**Commands:** `yt-transcript <url>`, `yt-analyze <url> ["question"]`, `code-adversarial-review`
 **Why:** Get YouTube video content into Claude as plain text with zero MCP overhead. One MCP server costs ~18k tokens per message; these run as plain bash commands.
 - `yt-transcript` — clean transcript via yt-dlp (fast, free, works on any video with captions)
 - `yt-analyze` — full video analysis via Gemini 2.5 Flash (handles videos without captions, ask specific questions)
+- `code-adversarial-review` — adversarial code review via Gemini (second-opinion from a different model, free tier: 1,500 req/day)
 **Repo:** https://github.com/dillonmccaffrey/yt-tools
 **Install:** Included in `install.sh`
 
@@ -150,6 +151,7 @@ Starting a new project? Ask these:
 6. **Processing user input → database?** → Security hook will remind you. Still audit manually.
 7. **Need to analyse a YouTube video?** → `yt-transcript` or `yt-analyze` are already installed
 8. **Medium-to-complex feature work regularly?** → Install `superpowers` — auto-fires, saves ~14% tokens on real tasks
+9. **Want a second opinion before committing?** → `code-adversarial-review` (free, already installed)
 
 ---
 

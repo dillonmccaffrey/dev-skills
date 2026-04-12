@@ -70,10 +70,13 @@ Follow PSR-12. Match existing codebase style above everything else.
 
 ---
 
-## YouTube Tools (CLI — no MCP overhead)
+## CLI Tools (Gemini-powered, free tier)
 - `yt-transcript <url>` — clean text transcript via yt-dlp (fast, free)
 - `yt-analyze <url> ["question"]` — Gemini 2.5 Flash video analysis (needs ~/.gemini-token)
 - `yt-analyze <url> --transcript` — use when video has no captions
+- `code-adversarial-review` — adversarial review of current git diff
+- `code-adversarial-review --base main` — review all changes since main
+- `code-adversarial-review --focus security` — security-focused review
 
 ## Skills Available on This Machine
 

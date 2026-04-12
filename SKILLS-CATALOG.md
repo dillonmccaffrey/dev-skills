@@ -61,10 +61,25 @@ All evaluated skills for PHP full-stack development. Read this to decide what to
 
 ---
 
+### superpowers
+**What:** Agentic skills framework — 14 skills that auto-fire at conversation start. Guides Claude through Clarify → Design → Plan → Code → Verify phases. Dispatches parallel sub-agents for independent tasks, shows visual mockups on localhost before writing code, asks clarifying questions before burning tokens.  
+**Install when:** Doing medium-to-complex feature work regularly. Replaces or supplements `/feature-dev` for most scenarios.  
+**Skip when:** Primarily simple hotfixes; the 8% overhead isn't worth it for trivial tasks. Also skip if you prefer explicit control over automatic dispatching.  
+**Token impact:** ~9% cost savings + ~14% fewer tokens on medium/complex tasks. Simple tasks: slight overhead.  
+**Install:**
+```bash
+claude plugin install superpowers
+```
+Install globally (user level) when prompted — applies to all projects automatically.  
+**GitHub:** github.com/JesseSteele/superpowers (or search Claude Code marketplace)
+
+---
+
 ### feature-dev
 **What:** Structured feature development — discovery → codebase exploration → architecture design → implementation  
 **Install when:** Feature touches more than 2 files, or you need to understand existing architecture before writing code  
 **Skip when:** Simple hotfixes or single-file changes  
+**Note:** If superpowers is installed, it handles most of this automatically. Use `/feature-dev` when you want explicit scoped discovery without the full superpowers lifecycle.  
 **Install:**
 ```bash
 curl -sf "https://raw.githubusercontent.com/anthropics/claude-plugins-official/main/plugins/feature-dev/commands/feature-dev.md" \
@@ -134,6 +149,7 @@ Starting a new project? Ask these:
 5. **GitHub issue tracking?** → Install `github` MCP
 6. **Processing user input → database?** → Security hook will remind you. Still audit manually.
 7. **Need to analyse a YouTube video?** → `yt-transcript` or `yt-analyze` are already installed
+8. **Medium-to-complex feature work regularly?** → Install `superpowers` — auto-fires, saves ~14% tokens on real tasks
 
 ---
 

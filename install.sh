@@ -52,6 +52,16 @@ mkdir -p ~/.claude/skills/php-simplifier
 cp "$SCRIPT_DIR/custom-skills/php-simplifier/SKILL.md" ~/.claude/skills/php-simplifier/SKILL.md
 echo "  [+] php-simplifier (/php-simplifier)"
 
+# yt-tools
+echo "Installing yt-tools..."
+if [ ! -d "$HOME/yt-tools" ]; then
+  git clone https://github.com/dillonmccaffrey/yt-tools "$HOME/yt-tools"
+fi
+bash "$HOME/yt-tools/install.sh"
+echo "  [+] yt-tools (yt-transcript, yt-analyze)"
+echo "  Note: yt-analyze needs a Gemini key at ~/.gemini-token"
+echo "        Get one free at https://aistudio.google.com/apikey"
+
 echo ""
 echo "Done. Tier 1 installed."
 echo ""

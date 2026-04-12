@@ -70,6 +70,11 @@ Follow PSR-12. Match existing codebase style above everything else.
 
 ---
 
+## YouTube Tools (CLI — no MCP overhead)
+- `yt-transcript <url>` — clean text transcript via yt-dlp (fast, free)
+- `yt-analyze <url> ["question"]` — Gemini 2.5 Flash video analysis (needs ~/.gemini-token)
+- `yt-analyze <url> --transcript` — use when video has no captions
+
 ## Skills Available on This Machine
 
 | Skill | Trigger |

@@ -39,6 +39,16 @@ All evaluated skills for PHP full-stack development. Read this to decide what to
 
 ---
 
+### yt-tools
+**Commands:** `yt-transcript <url>`, `yt-analyze <url> ["question"]`
+**Why:** Get YouTube video content into Claude as plain text with zero MCP overhead. One MCP server costs ~18k tokens per message; these run as plain bash commands.
+- `yt-transcript` — clean transcript via yt-dlp (fast, free, works on any video with captions)
+- `yt-analyze` — full video analysis via Gemini 2.5 Flash (handles videos without captions, ask specific questions)
+**Repo:** https://github.com/dillonmccaffrey/yt-tools
+**Install:** Included in `install.sh`
+
+---
+
 ### php-simplifier
 **What:** Post-edit cleanup agent — PSR-12, type hints, prepared statements, early returns, match expressions  
 **Why:** PHP accumulates style debt and security anti-patterns quickly. One-pass cleanup after every edit.  
@@ -123,6 +133,7 @@ Starting a new project? Ask these:
 4. **Need UI testing or deploy verification?** → Install `playwright`
 5. **GitHub issue tracking?** → Install `github` MCP
 6. **Processing user input → database?** → Security hook will remind you. Still audit manually.
+7. **Need to analyse a YouTube video?** → `yt-transcript` or `yt-analyze` are already installed
 
 ---
 

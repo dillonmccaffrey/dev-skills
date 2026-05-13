@@ -58,6 +58,15 @@ All evaluated skills for PHP full-stack development. Read this to decide what to
 
 ---
 
+### scope-feature
+**What:** Walks through structured scoping questions (greenfield / rebuild / new feature) before any non-trivial work. Writes answers to `redesign-notes.md`. Ends with a one-line minimum-viable spec.
+**Why:** Under-specification is the #1 cause of refactor churn with Claude Code. This skill makes the discipline cheap — invoke `/scope-feature` instead of remembering to write a spec by hand.
+**Trigger:** `/scope-feature`
+**Install:** Included in `install.sh`
+**Reference:** See `WORKFLOW-PRINCIPLES.md` for the decision-tier model and full question sets.
+
+---
+
 ## Tier 2 — Install when the project needs it
 
 ---

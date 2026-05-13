@@ -86,6 +86,7 @@ Follow PSR-12. Match existing codebase style above everything else.
 | `/commit-push-pr` | Commit + push + open PR |
 | `/clean_gone` | Remove merged local branches |
 | `/php-simplifier` | Post-edit PHP cleanup |
+| `/scope-feature` | Walk through scoping questions before non-trivial work |
 | `/feature-dev` | Structured feature development |
 | `/code-review` | Review a PR with multi-agent analysis |
 | `/session-report` | Weekly token usage report |

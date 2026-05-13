@@ -32,6 +32,11 @@ cp ~/dev-skills/CLAUDE.md ~/path/to/project/CLAUDE.md
 - `security-guidance` — auto-fires on every file edit (SQL injection, XSS, GitHub Actions)
 - `session-report` — weekly token usage HTML report
 - `php-simplifier` — PSR-12, type hints, prepared statements, no nested ternaries
+- `scope-feature` — `/scope-feature` — structured scoping questions before any non-trivial work
+
+**Workflow reference:**
+- `WORKFLOW.md` — session hygiene, token management, where to open Claude
+- `WORKFLOW-PRINCIPLES.md` — decision-tier model, scoping questions, port-vs-redesign separation, design-system path
 
 **Install when relevant (see SKILLS-CATALOG.md):**
 - `feature-dev` — structured feature development for non-trivial tasks

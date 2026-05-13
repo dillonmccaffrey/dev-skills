@@ -52,6 +52,11 @@ mkdir -p ~/.claude/skills/php-simplifier
 cp "$SCRIPT_DIR/custom-skills/php-simplifier/SKILL.md" ~/.claude/skills/php-simplifier/SKILL.md
 echo "  [+] php-simplifier (/php-simplifier)"
 
+# scope-feature (custom — from this repo)
+mkdir -p ~/.claude/skills/scope-feature
+cp "$SCRIPT_DIR/custom-skills/scope-feature/SKILL.md" ~/.claude/skills/scope-feature/SKILL.md
+echo "  [+] scope-feature (/scope-feature)"
+
 # yt-tools
 echo "Installing yt-tools..."
 if [ ! -d "$HOME/yt-tools" ]; then

@@ -1,8 +1,8 @@
 # Workflow Principles
 
-Distilled from a working session on 2026-05-13. Focus: reducing churn and rework when developing with Claude Code, especially on internal tools and rebuilds.
+Distilled from a working session on 2026-05-13 (provenance in `JOURNAL.md`). Focus: reducing churn and rework when developing with Claude Code, especially on internal tools and rebuilds.
 
-This is a stable reference doc. The dated source-conversation summary is in the appendix.
+This is a stable reference doc.
 
 ---
 
@@ -75,28 +75,9 @@ Cheaper alternative if you don't want two passes: write a 3-bullet diff against 
 
 ## Scoping questions
 
-Use `/scope-feature` to walk through these structured. Three sets depending on context:
+Three question sets depending on context — **greenfield**, **rebuild**, or **new feature on existing tool**. The full questions, probing rules, and exit criteria live in the `/scope-feature` skill at `custom-skills/scope-feature/SKILL.md` — that file is the single source of truth, so the questions don't drift between two places.
 
-### Greenfield
-1. Who uses this and how often?
-2. What job are they doing? (Outcome, not feature.)
-3. What's the simplest version that does the job?
-4. What happens if we don't build it?
-5. What's explicitly NOT in scope?
-
-### Rebuild (the main case for internal-tools work)
-1. What does the existing tool do?
-2. What's broken or annoying about it?
-3. What do users rely on that mustn't change?
-4. What's explicitly changing?
-5. What's explicitly staying the same?
-
-### New feature on existing tool
-1. What problem does this feature solve?
-2. How is the problem solved today?
-3. Who hits it and how often?
-4. What's the simplest version that solves it?
-5. What's explicitly out of scope for this version?
+Run `/scope-feature` at the start of any non-trivial work. The skill asks one question at a time, caps probing at two follow-ups per question to avoid interrogation, and ends by drafting 2–3 candidate min-viable-spec lines for you to pick from.
 
 **Key principle for rebuilds: inheritance is safe by default.** The existing tool documents intent for everything that stays the same. Only the delta needs validating — a much smaller list of things to ever bother users about than re-doing full discovery.
 
@@ -144,6 +125,10 @@ The drift you get trying to *"design a system first"* then fit components to it 
 
 The design system is the asset; uniformity of *old* tools is not.
 
+### Variant: extract from an existing reference tool
+
+The build-one-tool-first rule has an inverted form. If a tool already exists at the standard you want (e.g. Kaizen for Mullan internal apps), the "one tool built to standard" is *already done* — the next move is to **extract tokens (colour, radius, spacing, shadow) from it as the foundation for new tools**, without copying its component CSS. New tools build their own components on those tokens. Same principle, different starting point: the system still emerges from one real instance, just an existing one.
+
 ---
 
 ## How Claude operates — useful things to know
@@ -169,21 +154,4 @@ The design system is the asset; uniformity of *old* tools is not.
 
 ---
 
-## Appendix — source conversation (2026-05-13)
-
-This document distills a working session on workflow improvement between Dillon and Claude. Topics covered in order:
-
-1. **The one-shot-perfection trap** — replaced with the *more drafts, faster* frame.
-2. **Three-tier decision model** — Tier 1 (direction) leaking down to Claude is the main churn cause.
-3. **The "lazy brain" framing** — re-framed as a miscalibrated cost function (optimize for total task cost, not current prompt cost).
-4. **Minimum viable spec format** — *"Build X, structured as Y, using pattern Z, not Q."*
-5. **Concrete example: Streamlit → PHP/Alpine port** at Mullan Lighting. Diagnosed as port + redesign mixed.
-6. **Discovery vs. construction** — when a redesign spec doesn't yet exist, the next step is writing it down, not prompting Claude.
-7. **Architecture renamed to product/scoping** — software architecture (code structure) and product scoping (what to build) are different muscles. The user was describing the latter.
-8. **Rebuild adaptation of the five questions** — most internal-tools work is rebuilds; inheritance is safe, only the delta needs validation.
-9. **Tools for capturing decisions** — markdown file in repo > Notion/Obsidian. ADRs worth knowing the name of. Sketch don't prose for layout.
-10. **Design system dead end** — diagnosed as building the system before having a concrete instance to extract from. Fix is build-one-tool-well-then-extract.
-11. **Iteration paradox** — accept that old tools won't match new standards; boy scout rule only; finished beats consistent.
-12. **Built `/scope-feature` skill** and this principles doc as portable artifacts.
-
-The live working queue tracking ongoing threads lives at `~/docs/claude-workflow-queue.md` on the personal laptop.
+The source conversation that produced this document is preserved in `JOURNAL.md`. Provenance only — not load-bearing.

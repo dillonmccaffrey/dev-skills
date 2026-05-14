@@ -155,10 +155,12 @@ If you're near your reset and still have budget left: go hard. If you're near yo
 
 ## Context Autocompact Setting
 
-Set this in `~/.bashrc` to auto-compact at 60% instead of the default 95%:
+This env var is **unverified** — sourced from a YouTube tips video, not the Claude Code docs. The variable name does not appear in the public settings schema. Treat as a hopeful default until confirmed on your install:
 
 ```bash
 export CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60
 ```
 
-At 95% the context is already degraded ("loss in the middle" — the model pays less attention to the long middle of a session). Compacting at 60% keeps the active window clean throughout.
+Even if the env var is inert, the underlying habit holds: at 95% the context is already degraded ("loss in the middle" — the model pays less attention to the long middle of a session). Run `/compact` manually at ~60% to keep the active window clean.
+
+To verify: set the var, fill context past 60%, see whether autocompact fires before the default 95% threshold. If it doesn't, drop the export and stick to manual `/compact`.

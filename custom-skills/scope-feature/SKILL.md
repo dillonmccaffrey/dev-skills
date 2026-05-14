@@ -9,9 +9,25 @@ You are a structured scoping facilitator. When invoked, your job is to walk the 
 
 The point of this skill is to make the user **answer the questions out loud** so the fuzzy intent in their head becomes concrete prose Claude can build against. It is not about generating a generic spec template — it is a forcing function for decisions.
 
+This skill is the single source of truth for the question sets. `WORKFLOW-PRINCIPLES.md` references this skill rather than duplicating the questions.
+
+## Step 0 — Spike or build?
+
+Before anything else, ask:
+
+> "Do you have a concrete answer to *what we're building, structured how, using what existing pattern, and explicitly not what*? Or is the problem still fuzzy enough that you'd be exploring to find out?"
+
+Two outcomes:
+
+- **Build** (user has rough answers to all four parts) → proceed to Step 1.
+- **Spike** (user has fuzzy intent and can't write the spec) → STOP scoping. Suggest a timeboxed throwaway exploration instead:
+  > "Sounds like a spike, not a build. Want to name it as a spike — pick a 30/60/90-minute budget, throw the output away, and run `/scope-feature` again once the spike clarifies the shape?"
+
+Spike masquerading as a build is the most expensive failure mode this skill prevents. Catch it here, not in the spec at the end.
+
 ## Step 1 — Identify the context
 
-Ask the user a single question:
+Ask a single question:
 
 > "Is this (a) **greenfield** — new project or feature with no precedent; (b) a **rebuild** of an existing tool; or (c) a **new feature on an existing tool**?"
 
@@ -19,9 +35,18 @@ Wait for the answer. If unclear from the surrounding context, ask. Do not guess.
 
 ## Step 2 — Walk through the matching question set
 
-Ask the questions **one at a time**. Wait for an answer before asking the next. Probe if an answer is vague — *"What would 'often' look like — daily, weekly?"*, *"Can you point to the specific workflow that mustn't change?"*. The whole point is precision.
+Ask the questions **one at a time**. Wait for an answer before asking the next. Probe if an answer is vague — *"What would 'often' look like — daily, weekly?"*, *"Can you point to the specific workflow that mustn't change?"*. Precision is the whole point.
 
 Do not paste all five questions in a single message. That defeats the forcing function.
+
+### Probing exit criteria
+
+The probing loop has a cap. For any single question:
+
+1. First answer vague → probe with one concrete follow-up.
+2. Second answer still vague → mark the item as **Open** in the notes, move on. Do not probe a third time.
+
+This prevents the skill from becoming an interrogation. An incomplete scope with three flagged Opens beats a complete scope held in someone's head, and beats an abandoned scoping session even more.
 
 ### Greenfield set
 1. Who uses this and how often? (Daily vs. quarterly changes the design completely.)
@@ -54,10 +79,23 @@ Confirm with the user, then write a new section containing:
 - Today's date (use the current date from system context)
 - The feature/project name
 - The Q&A pairs cleaned into bullets (not verbatim transcript — distilled decisions)
-- A **one-line minimum-viable spec** at the end, in this format:
-  > *Build X, structured as Y, using existing pattern Z, and explicitly not Q.*
+- Any items marked **Open** from Step 2
+- A **one-line minimum-viable spec** at the end (see synthesis rules below)
 
-The minimum-viable-spec line is the most valuable artifact. If you cannot produce a coherent one from the answers, the answers were too vague — go back and probe.
+### Min-viable-spec synthesis
+
+The spec line is the load-bearing artifact. Do not generate one and call it done. Instead:
+
+1. Draft **2–3 candidate** spec lines from the answers, each in the format:
+   > *Build X, structured as Y, using existing pattern Z, and explicitly not Q.*
+2. Present all candidates to the user as a numbered list.
+3. Ask the user to pick one, or to say which parts of each they want combined.
+4. Write the chosen line to the notes file.
+
+If you cannot produce even two coherent candidates from the answers, the answers were too vague. Surface that explicitly:
+> "I can't draft a coherent spec from these answers — the strongest open items are [X, Y]. Want to go back and pin those down, or write what we have with the gaps marked as Open?"
+
+Either is a valid resolution. Pretending the spec is settled when it isn't is the failure mode.
 
 ## Principles to enforce during the conversation
 
